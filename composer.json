@@ -2,6 +2,7 @@
   "name": "zuckerwelt/dpdcloudapi",
   "description": "DPD Germany Magento2 PHP Cloud API",
   "type": "magento2-library",
+  "version": "1.0.0",
   "license": "CC BY-NC 4.0",
   "authors": [
     {
