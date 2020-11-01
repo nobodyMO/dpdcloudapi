@@ -1,0 +1,744 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="https://cloud.dpd.com/" xmlns:s1="http://dpd.com/common/service/types/ParcelLifeCycleService/2.0" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="https://cloud.dpd.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Version 1.0</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="https://cloud.dpd.com/">
+      <s:import namespace="http://dpd.com/common/service/types/ParcelLifeCycleService/2.0" />
+      <s:element name="getZipCodeRules">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getZipCodeRulesRequest" type="tns:getZipCodeRulesRequestType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="getZipCodeRulesRequestType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Language" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PartnerCredentials" type="tns:PartnerCredentialType" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserCredentials" type="tns:UserCredentialType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PartnerCredentialType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UserCredentialType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="cloudUserID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getZipCodeRulesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getZipCodeRulesResult" type="tns:getZipCodeRulesResponseType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="getZipCodeRulesResponseType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Language" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Ack" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="TimeStamp" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZipCodeRules" type="tns:ZipCodeRulesType" />
+          <s:element minOccurs="0" maxOccurs="1" name="SystemInformation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorDataList" type="tns:ArrayOfErrorDataType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ZipCodeRulesType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZipCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoPickupDays" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExpressCutOff" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClassicCutOff" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PickupDepot" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfErrorDataType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ErrorDataType" nillable="true" type="tns:ErrorDataType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ErrorDataType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ErrorID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMsgShort" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMsgLong" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="setOrder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="setOrderRequest" type="tns:setOrderRequestType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="setOrderRequestType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Language" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PartnerCredentials" type="tns:PartnerCredentialType" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserCredentials" type="tns:UserCredentialType" />
+          <s:element minOccurs="1" maxOccurs="1" name="OrderAction" type="tns:OrderActionType" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrderSettings" type="tns:OrderSettingsType" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrderDataList" type="tns:ArrayOfOrderDataType" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="OrderActionType">
+        <s:restriction base="s:string">
+          <s:enumeration value="startOrder" />
+          <s:enumeration value="checkOrderData" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="OrderSettingsType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ShipDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="LabelSize" type="tns:LabelSizeType" />
+          <s:element minOccurs="1" maxOccurs="1" name="LabelStartPosition" type="tns:LabelStartPositionType" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="LabelSizeType">
+        <s:restriction base="s:string">
+          <s:enumeration value="PDF_A4" />
+          <s:enumeration value="PDF_A6" />
+          <s:enumeration value="ZPL_A6" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="LabelStartPositionType">
+        <s:restriction base="s:string">
+          <s:enumeration value="UpperLeft" />
+          <s:enumeration value="UpperRight" />
+          <s:enumeration value="LowerLeft" />
+          <s:enumeration value="LowerRight" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfOrderDataType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OrderData" nillable="true" type="tns:OrderDataType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OrderDataType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ShipAddress" type="tns:AddressType" />
+          <s:element minOccurs="1" maxOccurs="1" name="ParcelShopID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParcelData" type="tns:ParcelDataType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AddressType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Salutation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Street" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HouseNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZipCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Gender" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ParcelDataType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ShipService" type="tns:ShipServiceType" />
+          <s:element minOccurs="1" maxOccurs="1" name="Weight" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="Content" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="YourInternalID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Reference1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Reference2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="COD" type="tns:CODType" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ShipServiceType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Classic" />
+          <s:enumeration value="Classic_Predict" />
+          <s:enumeration value="Classic_COD" />
+          <s:enumeration value="Classic_COD_Predict" />
+          <s:enumeration value="Shop_Delivery" />
+          <s:enumeration value="Shop_Return" />
+          <s:enumeration value="Classic_Return" />
+          <s:enumeration value="Express_830" />
+          <s:enumeration value="Express_830_COD" />
+          <s:enumeration value="Express_10" />
+          <s:enumeration value="Express_10_COD" />
+          <s:enumeration value="Express_12" />
+          <s:enumeration value="Express_12_COD" />
+          <s:enumeration value="Express_18" />
+          <s:enumeration value="Express_18_COD" />
+          <s:enumeration value="Express_12_Saturday" />
+          <s:enumeration value="Express_12_COD_Saturday" />
+          <s:enumeration value="Express_International" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="CODType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Purpose" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Payment" type="tns:PaymentType" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="PaymentType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Cash" />
+          <s:enumeration value="Cheque" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="setOrderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="setOrderResult" type="tns:setOrderResponseType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="setOrderResponseType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Language" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Ack" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="TimeStamp" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="LabelResponse" type="tns:LabelResponseType" />
+          <s:element minOccurs="0" maxOccurs="1" name="SystemInformation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorDataList" type="tns:ArrayOfErrorDataType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LabelResponseType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="LabelPDF" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LabelDataList" type="tns:ArrayOfLabelDataType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfLabelDataType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LabelData" nillable="true" type="tns:LabelDataType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LabelDataType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="YourInternalID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParcelNo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getParcelShopFinder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getParcelShopFinderRequest" type="tns:getParcelShopFinderRequestType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="getParcelShopFinderRequestType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Language" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PartnerCredentials" type="tns:PartnerCredentialType" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserCredentials" type="tns:UserCredentialType" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaxReturnValues" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SearchMode" type="tns:SearchModeType" />
+          <s:element minOccurs="0" maxOccurs="1" name="SearchAddress" type="tns:SearchAddressType" />
+          <s:element minOccurs="0" maxOccurs="1" name="SearchGeoData" type="tns:SearchGeoDataType" />
+          <s:element minOccurs="0" maxOccurs="1" name="HideOnClosedAt" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NeedService" type="tns:dpdServiceType" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="SearchModeType">
+        <s:restriction base="s:string">
+          <s:enumeration value="SearchByAddress" />
+          <s:enumeration value="SearchByGeoData" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="SearchAddressType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Street" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HouseNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZipCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SearchGeoDataType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Longitude" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Latitude" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="dpdServiceType">
+        <s:restriction base="s:string">
+          <s:enumeration value="StandardService" />
+          <s:enumeration value="ConsigneePickup" />
+          <s:enumeration value="ReturnService" />
+          <s:enumeration value="ExpressService" />
+          <s:enumeration value="PrepaidService" />
+          <s:enumeration value="CashOnDeliveryService" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="getParcelShopFinderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getParcelShopFinderResult" type="tns:getParcelShopFinderResponseType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="getParcelShopFinderResponseType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Language" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Ack" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="TimeStamp" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResultCounter" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParcelShopList" type="tns:ArrayOfParcelShopType" />
+          <s:element minOccurs="0" maxOccurs="1" name="SystemInformation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorDataList" type="tns:ArrayOfErrorDataType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfParcelShopType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ParcelShop" nillable="true" type="tns:ParcelShopType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ParcelShopType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ParcelShopID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShopAddress" type="tns:AddressType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Homepage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GeoData" type="tns:GeoDataType" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExpressCutOff" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShopServiceList" type="tns:ArrayOfShopServiceType" />
+          <s:element minOccurs="0" maxOccurs="1" name="OpeningHoursList" type="tns:ArrayOfOpeningHoursType" />
+          <s:element minOccurs="0" maxOccurs="1" name="HolidayList" type="tns:ArrayOfHolidayType" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExtraInfo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceDetail" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GeoDataType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Distance" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Longitude" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Latitude" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="CoordinateX" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="CoordinateY" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="CoordinateZ" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfShopServiceType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ShopService" type="tns:ShopServiceType" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ShopServiceType">
+        <s:restriction base="s:string">
+          <s:enumeration value="SearchAll" />
+          <s:enumeration value="PickupByConsignee" />
+          <s:enumeration value="ReturnService" />
+          <s:enumeration value="ExpressService" />
+          <s:enumeration value="PrepaidService" />
+          <s:enumeration value="CashOnDelivery_Cash" />
+          <s:enumeration value="CashOnDelivery_Cheque" />
+          <s:enumeration value="CashOnDelivery_CreditCard" />
+          <s:enumeration value="PayInShopService" />
+          <s:enumeration value="ShopIdentService" />
+          <s:enumeration value="VoucherService" />
+          <s:enumeration value="Paketstation" />
+          <s:enumeration value="Paketstation_PickupService" />
+          <s:enumeration value="Paketstation_ParcelLockService" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfOpeningHoursType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OpeningHours" nillable="true" type="tns:OpeningHoursType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OpeningHoursType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="WeekDay" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OpenTimeList" type="tns:ArrayOfOpenTimeType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfOpenTimeType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OpenTimeType" nillable="true" type="tns:OpenTimeType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OpenTimeType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TimeFrom" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TimeEnd" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfHolidayType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Holiday" nillable="true" type="tns:HolidayType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="HolidayType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="HolidayFrom" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="HolidayEnd" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getParcelLifeCycle">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getParcelLifeCycleRequest" type="tns:getParcelLifeCycleRequestType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="getParcelLifeCycleRequestType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Language" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PartnerCredentials" type="tns:PartnerCredentialType" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserCredentials" type="tns:UserCredentialType" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParcelNo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getParcelLifeCycleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getParcelLifeCycleResult" type="tns:getParcelLifeCycleResponseType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="getParcelLifeCycleResponseType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Language" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Ack" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="TimeStamp" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParcelLifeCycleData" type="s1:TrackingResult" />
+          <s:element minOccurs="0" maxOccurs="1" name="SystemInformation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorDataList" type="tns:ArrayOfErrorDataType" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getOrderStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getOrderStatusRequest" type="tns:getOrderStatusRequestType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="getOrderStatusRequestType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Language" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PartnerCredentials" type="tns:PartnerCredentialType" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserCredentials" type="tns:UserCredentialType" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParcelNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeliveryZipCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getOrderStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getOrderStatusResult" type="tns:getOrderStatusResponseType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="getOrderStatusResponseType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Language" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Ack" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="TimeStamp" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrderStatus" type="tns:OrderStatusType" />
+          <s:element minOccurs="0" maxOccurs="1" name="SystemInformation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorDataList" type="tns:ArrayOfErrorDataType1" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OrderStatusType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ParcelNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrderInformation" type="tns:OrderInformationType" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShipAddress" type="tns:AddressType" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastStatusInfo" type="tns:StatusInfoType" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusInfoContainer" type="tns:StatusInfoContainerType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OrderInformationType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ParcelNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MPSID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ServiceCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProductName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Reference" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Weight" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CODAmount" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Collis" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParcelNoList" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompleteDelivery" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReceiverName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SenderName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EstimatedDeliveryTime" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="StatusInfoType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="StatusReached" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Headline" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusText_Mobile" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusText_Desktop" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DepotData" type="tns:DepotDataType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DepotDataType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Depot" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GeoData" type="tns:GeoDataType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="tns:AddressType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="StatusInfoContainerType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Start" type="tns:StatusInfoType" />
+          <s:element minOccurs="0" maxOccurs="1" name="OnTheRoad" type="tns:StatusInfoType" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeliveryDepot" type="tns:StatusInfoType" />
+          <s:element minOccurs="0" maxOccurs="1" name="CarLoad" type="tns:StatusInfoType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Delivered" type="tns:StatusInfoType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfErrorDataType1">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ErrorData" nillable="true" type="tns:ErrorDataType" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://dpd.com/common/service/types/ParcelLifeCycleService/2.0">
+      <s:complexType name="TrackingResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="shipmentInfo" type="s1:ShipmentInfo" />
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="statusInfo" type="s1:StatusInfo" />
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="contactInfo" type="s1:ContentItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ShipmentInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:StatusInfo">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="receiver" type="s1:ContentItem" />
+              <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="predictInformation" type="s1:ContentItem" />
+              <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="serviceDescription" type="s1:ContentItem" />
+              <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="additionalServiceElements" type="s1:ContentItem" />
+              <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="trackingProperty" type="s1:TrackingProperty" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="StatusInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="status">
+            <s:simpleType>
+              <s:restriction base="s:string">
+                <s:enumeration value="SHIPMENT" />
+                <s:enumeration value="ACCEPTED" />
+                <s:enumeration value="AT_SENDING_DEPOT" />
+                <s:enumeration value="ON_THE_ROAD" />
+                <s:enumeration value="AT_DELIVERY_DEPOT" />
+                <s:enumeration value="DELIVERED" />
+              </s:restriction>
+            </s:simpleType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="label" type="s1:ContentLine" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="description" type="s1:ContentItem" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="statusHasBeenReached" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="isCurrentStatus" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="showContactInfo" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="location" type="s1:ContentLine" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="date" type="s1:ContentLine" />
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="normalItems" type="s1:ContentItem" />
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="importantItems" type="s1:ContentItem" />
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="errorItems" type="s1:ContentItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ContentLine">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="content" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="bold" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="paragraph" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ContentItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="label" type="s1:ContentLine" />
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="content" type="s1:ContentLine" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="linkTarget" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TrackingProperty">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="key" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="getZipCodeRulesSoapIn">
+    <wsdl:part name="parameters" element="tns:getZipCodeRules" />
+  </wsdl:message>
+  <wsdl:message name="getZipCodeRulesSoapOut">
+    <wsdl:part name="parameters" element="tns:getZipCodeRulesResponse" />
+  </wsdl:message>
+  <wsdl:message name="setOrderSoapIn">
+    <wsdl:part name="parameters" element="tns:setOrder" />
+  </wsdl:message>
+  <wsdl:message name="setOrderSoapOut">
+    <wsdl:part name="parameters" element="tns:setOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="getParcelShopFinderSoapIn">
+    <wsdl:part name="parameters" element="tns:getParcelShopFinder" />
+  </wsdl:message>
+  <wsdl:message name="getParcelShopFinderSoapOut">
+    <wsdl:part name="parameters" element="tns:getParcelShopFinderResponse" />
+  </wsdl:message>
+  <wsdl:message name="getParcelLifeCycleSoapIn">
+    <wsdl:part name="parameters" element="tns:getParcelLifeCycle" />
+  </wsdl:message>
+  <wsdl:message name="getParcelLifeCycleSoapOut">
+    <wsdl:part name="parameters" element="tns:getParcelLifeCycleResponse" />
+  </wsdl:message>
+  <wsdl:message name="getOrderStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:getOrderStatus" />
+  </wsdl:message>
+  <wsdl:message name="getOrderStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:getOrderStatusResponse" />
+  </wsdl:message>
+  <wsdl:portType name="DPDCloudService_v1Soap">
+    <wsdl:operation name="getZipCodeRules">
+      <wsdl:input message="tns:getZipCodeRulesSoapIn" />
+      <wsdl:output message="tns:getZipCodeRulesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setOrder">
+      <wsdl:input message="tns:setOrderSoapIn" />
+      <wsdl:output message="tns:setOrderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getParcelShopFinder">
+      <wsdl:input message="tns:getParcelShopFinderSoapIn" />
+      <wsdl:output message="tns:getParcelShopFinderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getParcelLifeCycle">
+      <wsdl:input message="tns:getParcelLifeCycleSoapIn" />
+      <wsdl:output message="tns:getParcelLifeCycleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getOrderStatus">
+      <wsdl:input message="tns:getOrderStatusSoapIn" />
+      <wsdl:output message="tns:getOrderStatusSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DPDCloudService_v1Soap" type="tns:DPDCloudService_v1Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getZipCodeRules">
+      <soap:operation soapAction="https://cloud.dpd.com/getZipCodeRules" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setOrder">
+      <soap:operation soapAction="https://cloud.dpd.com/setOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getParcelShopFinder">
+      <soap:operation soapAction="https://cloud.dpd.com/getParcelShopFinder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getParcelLifeCycle">
+      <soap:operation soapAction="https://cloud.dpd.com/getParcelLifeCycle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOrderStatus">
+      <soap:operation soapAction="https://cloud.dpd.com/getOrderStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DPDCloudService_v1Soap12" type="tns:DPDCloudService_v1Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getZipCodeRules">
+      <soap12:operation soapAction="https://cloud.dpd.com/getZipCodeRules" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setOrder">
+      <soap12:operation soapAction="https://cloud.dpd.com/setOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getParcelShopFinder">
+      <soap12:operation soapAction="https://cloud.dpd.com/getParcelShopFinder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getParcelLifeCycle">
+      <soap12:operation soapAction="https://cloud.dpd.com/getParcelLifeCycle" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOrderStatus">
+      <soap12:operation soapAction="https://cloud.dpd.com/getOrderStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DPDCloudService_v1">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Version 1.0</wsdl:documentation>
+    <wsdl:port name="DPDCloudService_v1Soap" binding="tns:DPDCloudService_v1Soap">
+      <soap:address location="https://cloud.dpd.com/services/v1/DPDCloudService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DPDCloudService_v1Soap12" binding="tns:DPDCloudService_v1Soap12">
+      <soap12:address location="https://cloud.dpd.com/services/v1/DPDCloudService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
